@@ -5,23 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مدونتي البسيطة</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+
+    <header class="bg-success text-white text-center py-3">
         <h1>مرحبا بكم في مدونتي</h1>
     </header>
 
-    <main>
+    <main class="container mt-5">
+        <input type="text" id="searchInput" class="form-control" placeholder="ابحث عن مقال...">
+
         <section>
             <h2>أحدث المقالات</h2>
-            <ul>
-                <li><a href="posts.html">عنوان المقال الأول</a></li>
-                <li><a href="posts.html">عنوان المقال الثاني</a></li>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="posts.html">عنوان المقال الأول</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="posts.html">عنوان المقال الثاني</a>
+                </li>
             </ul>
         </section>
     </main>
+
+    <footer class="bg-success text-white text-center py-2 mt-5">
+        <p>© 2024 مدونتي</p>
+    </footer>
 
     <footer>
         <p>© 2024 مدونتي</p>
@@ -63,8 +76,25 @@
                 modal.style.display = "none";
             }
         };
-    </script>
 
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            var filter = this.value.toUpperCase();
+            var ul = document.querySelector("ul");
+            var li = ul.getElementsByTagName('li');
+
+            for (var i = 0; i < li.length; i++) {
+                var a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        });
+
+
+    </script>
+    <script id="dsq-count-scr" src="//my-blog-k81cyfj0kx.disqus.com/count.js" async></script>
 </body>
 
 </html>
